@@ -1,22 +1,16 @@
 default: &default
-  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
 
 development:
   <<: *default
-  adapter: mysql2
-  username: root
-  password:
-  host: localhost
-  database: furima-45691_development
+  adapter: sqlite3
+  database: db/development.sqlite3
 
 test:
   <<: *default
-  adapter: mysql2
-  username: root
-  password:
-  host: localhost
-  database: furima-45691_test
+  adapter: sqlite3
+  database: db/test.sqlite3
 
 production:
   <<: *default
