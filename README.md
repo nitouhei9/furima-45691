@@ -13,7 +13,6 @@
 | birth_date         | date       | null: false                 |
 
 ### Association
-- has_many :addresses
 - has_many :items
 - has_many :orders
 
@@ -21,16 +20,15 @@
 | Column            | Type       | Options                     |
 | ----------------- | ---------- | --------------------------- |
 | postal_code       | string     | null: false                 |
-| prefecture_id     | integer    | null: false                 |
+| shipping_region_id| integer    | null: false                 |
 | city              | string     | null: false                 |
 | street            | string     | null: false                 |
 | building          | string     |                             |
 | phone_number      | string     | null: false                 |
-| user              | references | null: false, foreign_key: true |
+| order             | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :prefecture
+- belongs_to :order
 
 ## Items テーブル
 | Column                | Type       | Options                     |
@@ -42,15 +40,11 @@
 | shipping_fee_payer_id | integer    | null: false                 |
 | shipping_region_id    | integer    | null: false                 |
 | shipping_day_id       | integer    | null: false                 |
-| status                | integer    | null: false, default: 0     |
+| status_id             | integer    | null: false                 |
 | user                  | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- belongs_to :category
-- belongs_to :shipping_fee_payer
-- belongs_to :shipping_region
-- belongs_to :shipping_day
 - has_one :order
 
 ## Orders テーブル
@@ -62,3 +56,4 @@
 ### Association
 - belongs_to :item
 - belongs_to :user
+- has_one :address
