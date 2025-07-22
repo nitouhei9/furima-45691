@@ -45,6 +45,9 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   # Use sqlite3 as the database for Active Record in development/test
   gem 'sqlite3', '~> 1.4'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
