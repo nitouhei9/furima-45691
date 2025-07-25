@@ -1,6 +1,8 @@
 // 価格計算
 document.addEventListener('DOMContentLoaded', calculatePrice);
 document.addEventListener('turbo:load', calculatePrice);
+document.addEventListener('turbo:render', calculatePrice);
+
 
 function calculatePrice() {
   const priceInput = document.getElementById('item-price');
@@ -10,6 +12,11 @@ function calculatePrice() {
   if (priceInput) {
     priceInput.removeEventListener('input', handlePriceInput);
     priceInput.addEventListener('input', handlePriceInput);
+  }
+  
+  // ページ読み込み時に価格が設定されている場合は計算を実行
+  if (priceInput.value) {
+      handlePriceInput();
   }
 
   function handlePriceInput() {
@@ -35,3 +42,4 @@ function calculatePrice() {
     }
   }
 }
+

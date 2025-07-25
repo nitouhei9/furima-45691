@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   
   def index
-    @items = Item.order(created_at: :desc)
+    # @items = Item.order(created_at: :desc) 一時コメントアウト
   end
 
   def new
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    # @item = Item.find(params[:id]) 一時コメントアウト
   end
 
   private
