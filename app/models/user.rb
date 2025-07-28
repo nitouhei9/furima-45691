@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "半角英数字混合で入力してください" }
 
-  # アソシエーション
-  has_many :items, dependent: :destroy
-  has_many :orders, dependent: :destroy
+  # # アソシエーション
+  # has_many :items, dependent: :destroy
+  # has_many :orders, dependent: :destroy
 end
