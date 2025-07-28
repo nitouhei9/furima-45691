@@ -19,8 +19,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @item = Item.find(params[:id]) 一時コメントアウト
+    @item = Item.find(params[:id])
   end
+
 
   private
 
