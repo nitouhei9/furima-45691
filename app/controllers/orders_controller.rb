@@ -32,13 +32,16 @@ class OrdersController < ApplicationController
   end
 
   def check_access
-    # 自分の商品は購入できない
+    # 自分の商品は購入できない（販売状況に関わらず）
     if @item.user_id == current_user.id
       redirect_to root_path
+      return
     end
-    # 売却済み商品は購入できない
+    
+    # 他人の商品でも売却済み商品は購入できない
     if @item.order.present?
       redirect_to root_path
+      return
     end
   end
 
