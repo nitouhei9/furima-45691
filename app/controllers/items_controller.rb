@@ -1,4 +1,3 @@
-# app/controllers/items_controller.rb
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
@@ -52,6 +51,16 @@ class ItemsController < ApplicationController
   end
 
   def check_user
-    redirect_to root_path unless @item.user_id == current_user.id
+    # 自分の商品でない場合はトップページへ
+    unless @item.user_id == current_user.id
+      redirect_to root_path
+      return
+    end
+    
+    # 売却済み商品は編集・削除できない
+    if @item.order.present?
+      redirect_to root_path
+      return
+    end
   end
 end
