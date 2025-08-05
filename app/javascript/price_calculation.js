@@ -1,45 +1,28 @@
-// 価格計算
-document.addEventListener('DOMContentLoaded', calculatePrice);
-document.addEventListener('turbo:load', calculatePrice);
-document.addEventListener('turbo:render', calculatePrice);
-
-
-function calculatePrice() {
+// 価格計算処理
+document.addEventListener('turbo:load', function () {
   const priceInput = document.getElementById('item-price');
   const addTaxPrice = document.getElementById('add-tax-price');
   const profit = document.getElementById('profit');
 
-  if (priceInput) {
-    priceInput.removeEventListener('input', handlePriceInput);
-    priceInput.addEventListener('input', handlePriceInput);
-  }
-  
-  // ページ読み込み時に価格が設定されている場合は計算を実行
-  if (priceInput.value) {
-      handlePriceInput();
-  }
+  if (!priceInput) return;
+
+  priceInput.removeEventListener('input', handlePriceInput);
+  priceInput.addEventListener('input', handlePriceInput);
+
+  // 初期値がある場合は即時計算
+  if (priceInput.value) handlePriceInput();
 
   function handlePriceInput() {
     const inputValue = priceInput.value;
-    
-    // 数値のみの場合のみ計算
     if (inputValue.match(/^[0-9]+$/)) {
-      const price = parseInt(inputValue);
-      
-      // 販売手数料の計算
+      const price = parseInt(inputValue, 10);
       const fee = Math.floor(price * 0.1);
-      
-      // 販売利益の計算
-      const profitAmount = Math.floor(price - fee);
-      
-      // 更新
+      const profitAmount = price - fee;
       addTaxPrice.textContent = fee.toLocaleString();
       profit.textContent = profitAmount.toLocaleString();
     } else {
-      // 無効な入力の場合は空にする
       addTaxPrice.textContent = '';
       profit.textContent = '';
     }
   }
-}
-
+});
