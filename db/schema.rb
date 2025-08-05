@@ -53,14 +53,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_31_085401) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "category_id"
-    t.integer "price"
-    t.integer "shipping_fee_payer_id"
-    t.integer "shipping_region_id"
-    t.integer "shipping_day_id"
-    t.integer "status_id"
+    t.string "name", null: false
+    t.text "description", null: false
+    t.integer "category_id", null: false
+    t.integer "price", null: false
+    t.integer "shipping_fee_payer_id", null: false
+    t.integer "shipping_region_id", null: false
+    t.integer "shipping_day_id", null: false
+    t.integer "status_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
