@@ -1,21 +1,24 @@
 default: &default
+  encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
 
 development:
   <<: *default
   adapter: sqlite3
-  database: db/development.sqlite3
+  username: root
+  password:
+  host: localhost
+  database: furima_45691_development
 
 test:
   <<: *default
   adapter: sqlite3
-  database: db/test.sqlite3
+  username: root
+  password:
+  host: localhost
+  database: furima_45691_test
 
 production:
   <<: *default
   adapter: postgresql
-  encoding: unicode
   url: <%= ENV['DATABASE_URL'] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
