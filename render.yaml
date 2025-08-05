@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: furima-45691
+    env: ruby
+    buildCommand: bundle install
+    startCommand: bundle exec puma -C config/puma.rb
+    migrateCommand: bundle exec rails db:migrate
+    plan: free
+    branch: main
+    region: oregon
+    runtime: ruby
+    repo: https://github.com/nitouhei9/furima-45691
