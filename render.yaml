@@ -1,3 +1,4 @@
+# render.yaml
 services:
   - type: web
     name: furima-45691
@@ -24,10 +25,6 @@ services:
         value: production
       - key: BUNDLE_WITHOUT
         value: development:test
-      - key: PAYJP_PUBLIC_KEY
-        value: pk_test_e0182a7388063e70adc8ab94
-      - key: PAYJP_SECRET_KEY
-        value: sk_test_c3dbeff4630e1cb2498ead47
 
 databases:
   - name: furima-45691-db
