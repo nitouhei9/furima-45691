@@ -16,6 +16,7 @@ services:
         fromDatabase:
           name: furima-db
           property: connectionString
+
 databases:
   - name: furima-db
     plan: free
